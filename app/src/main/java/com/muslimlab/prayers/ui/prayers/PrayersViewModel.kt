@@ -46,12 +46,12 @@ class PrayersViewModel(
                 it.firstOrNull()?.run {
                     timings.run {
                         val data = Prayers(
-                            imsak = imsak.to12HourFormat().toBurmeseNumber(),
-                            fajir = fajir.to12HourFormat().toBurmeseNumber(),
-                            dhuhr = dhuhr.to12HourFormat().toBurmeseNumber(),
-                            asr = asr.to12HourFormat().toBurmeseNumber(),
-                            maghrib = maghrib.to12HourFormat().toBurmeseNumber(),
-                            isha = isha.to12HourFormat().toBurmeseNumber(),
+                            imsak = "${BURMESE_DAY_TIME.MORNING.value} ${imsak.to12HourFormat().toBurmeseNumber()}",
+                            fajir = "${BURMESE_DAY_TIME.MORNING.value} ${fajir.to12HourFormat().toBurmeseNumber()}" ,
+                            dhuhr = "${BURMESE_DAY_TIME.NOON.value} ${dhuhr.to12HourFormat().toBurmeseNumber()}",
+                            asr = "${BURMESE_DAY_TIME.EVENING.value} ${asr.to12HourFormat().toBurmeseNumber()}",
+                            maghrib = "${BURMESE_DAY_TIME.EVENING.value} ${maghrib.to12HourFormat().toBurmeseNumber()}",
+                            isha = "${BURMESE_DAY_TIME.NIGHT.value} ${isha.to12HourFormat().toBurmeseNumber()}",
                             sunrise = sunrise.to12HourFormat().toBurmeseNumber(),
                             sunset = ""
                         )

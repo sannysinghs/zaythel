@@ -29,6 +29,15 @@ val BURMESE_MONTHS = mapOf(
     "November" to "နိုဝင်ဘာ",
     "December" to "ဒီဇင်ဘာ"
 )
+
+
+enum class BURMESE_DAY_TIME(val value: String) {
+    MORNING("မနက်"),
+    NOON("နေ့လည်"),
+    EVENING("ညနေ"),
+    NIGHT("ည")
+}
+
 val BURMESE_NUMBERS = listOf(
     "၀",
     "၁",
