@@ -237,7 +237,7 @@
                 android:id="@+id/txt_day_of_the_week"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="ကြာသာပတေး"
+                android:text="@{vm.dayOfTheWeek}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
