@@ -3,7 +3,7 @@ package com.muslimlab.prayers.model
 import com.google.gson.annotations.SerializedName
 
 data class PrayerResult(
-    @SerializedName("data") val data: List<PrayersData>
+    @SerializedName("data") val data: PrayersData
 )
 
 data class PrayersData(
@@ -13,7 +13,14 @@ data class PrayersData(
 
 data class PrayersDate(
     @SerializedName("timestamp") val timestamp: Long,
-    @SerializedName("readable") val readable: String
+    @SerializedName("readable") val readable: String,
+    @SerializedName("gregorian") val gregorian: Gregorian
+
+)
+
+data class Gregorian(
+    @SerializedName("date") val date: String,
+    @SerializedName("format") val format: String
 )
 
 data class Prayers(

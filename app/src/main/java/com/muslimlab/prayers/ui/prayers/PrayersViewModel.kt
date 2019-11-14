@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.databinding.ObservableField
 import com.muslimlab.prayers.model.Prayers
 import com.muslimlab.prayers.ui.utils.*
+import io.reactivex.Scheduler
 import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import java.io.PipedReader
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,11 +23,6 @@ class PrayersViewModel(
     val prayers = ObservableField<Prayers>()
     val today = ObservableField<String>()
     val dayOfTheWeek = ObservableField<String>()
-
-    fun fetchPrayers() = repository.fetchPrayers()
-        .map { it.data }
-
-
 
     fun onViewCreated() {
         prayerDisposable.add(Single.fromCallable { Calendar.getInstance().time }
@@ -41,24 +39,26 @@ class PrayersViewModel(
                 dayOfTheWeek.set(it.second)
             }.subscribe())
 
-        prayerDisposable.add(fetchPrayers()
+        prayerDisposable.add(repository.fetchPrayers()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
             .doOnSuccess {
-                it.firstOrNull()?.run {
-                    timings.run {
-                        val data = Prayers(
-                            imsak = "${BURMESE_DAY_TIME.MORNING.value} ${imsak.to12HourFormat().toBurmeseNumber()}",
-                            fajir = "${BURMESE_DAY_TIME.MORNING.value} ${fajir.to12HourFormat().toBurmeseNumber()}" ,
-                            dhuhr = "${BURMESE_DAY_TIME.NOON.value} ${dhuhr.to12HourFormat().toBurmeseNumber()}",
-                            asr = "${BURMESE_DAY_TIME.EVENING.value} ${asr.to12HourFormat().toBurmeseNumber()}",
-                            maghrib = "${BURMESE_DAY_TIME.EVENING.value} ${maghrib.to12HourFormat().toBurmeseNumber()}",
-                            isha = "${BURMESE_DAY_TIME.NIGHT.value} ${isha.to12HourFormat().toBurmeseNumber()}",
-                            sunrise = sunrise.to12HourFormat().toBurmeseNumber(),
-                            sunset = ""
-                        )
-                        prayers.set(data)
-                    }
+                it.data.timings.run {
+                    val data = Prayers(
+                        imsak = "${BURMESE_DAY_TIME.MORNING.value} ${imsak.to12HourFormat().toBurmeseNumber()}",
+                        fajir = "${BURMESE_DAY_TIME.MORNING.value} ${fajir.to12HourFormat().toBurmeseNumber()}" ,
+                        dhuhr = "${BURMESE_DAY_TIME.NOON.value} ${dhuhr.to12HourFormat().toBurmeseNumber()}",
+                        asr = "${BURMESE_DAY_TIME.EVENING.value} ${asr.to12HourFormat().toBurmeseNumber()}",
+                        maghrib = "${BURMESE_DAY_TIME.EVENING.value} ${maghrib.to12HourFormat().toBurmeseNumber()}",
+                        isha = "${BURMESE_DAY_TIME.NIGHT.value} ${isha.to12HourFormat().toBurmeseNumber()}",
+                        sunrise = sunrise.to12HourFormat().toBurmeseNumber(),
+                        sunset = ""
+                    )
+                    prayers.set(data)
                 }
+
             }
+            .doOnError { println(it) }
             .subscribe()
         )
     }
@@ -86,7 +86,7 @@ private fun String.toBurmeseNumber(): String {
     return " ${BURMESE_NUMBERS[split(":").first().toInt()]} : ${ BURMESE_NUMBERS[split(":").last().toInt()]}"
 }
 
-val FORMAT_PRAYER_TIME_12 = SimpleDateFormat("hh:mm", Locale.ENGLISH)
+val FORMAT_PRAYER_TIME_12 = SimpleDateFormat("HH:mm", Locale.ENGLISH)
 private fun String.to12HourFormat(): String {
     val cal = Calendar.getInstance().apply {
         set(Calendar.HOUR, split(":").first().toInt())

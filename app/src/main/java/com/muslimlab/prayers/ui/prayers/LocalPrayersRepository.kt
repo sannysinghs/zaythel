@@ -2,17 +2,26 @@ package com.muslimlab.prayers.ui.prayers
 
 import com.google.gson.Gson
 import com.muslimlab.prayers.model.PrayerResult
+import com.muslimlab.prayers.model.Prayers
 import io.reactivex.Observable
 import io.reactivex.Single
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
+import java.text.SimpleDateFormat
+import java.util.*
 
 const val FILE_PRAYERS = "/prayers.json"
+val PRAYERS_API_READABLE_FORMAT = SimpleDateFormat("DD-MM-YYYY", Locale.ENGLISH)
 
-class LocalPrayersRepository: PrayersRepository {
-    override fun fetchPrayers(): Single<PrayerResult> = Observable.just(
+class LocalPrayersRepository : PrayersRepository {
+    override fun todayPrayers(
+        city: String,
+        country: String
+    ): Single<Prayers> = Single.just(null)
+
+    override fun fetchPrayers(city: String, country: String): Single<PrayerResult> = Observable.just(
         Gson().fromJson(
             javaClass.getResourceAsStream(FILE_PRAYERS)?.asString(), PrayerResult::class.java
         )
@@ -31,7 +40,7 @@ fun InputStream.asString(): String {
                     .append("\n")
             }
 
-        }while (line != null)
+        } while (line != null)
 
     } catch (e: IOException) {
         e.printStackTrace()

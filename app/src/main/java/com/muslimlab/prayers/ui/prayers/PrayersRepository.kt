@@ -5,5 +5,6 @@ import com.muslimlab.prayers.model.Prayers
 import io.reactivex.Single
 
 interface PrayersRepository {
-    fun fetchPrayers(): Single<PrayerResult>
+    fun fetchPrayers(city: String = "yangon", country: String = "mm"): Single<PrayerResult>
+    fun todayPrayers(city: String = "yangon", country: String = "mm"): Single<Prayers>
 }

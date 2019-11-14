@@ -13,7 +13,6 @@ class PrayersRepositoryTest {
         repo.fetchPrayers()
             .test()
             .assertNoErrors()
-            .assertValue { it.data.isNotEmpty() && it.data.first().timings.asr.equals("15:24 (+0630)") }
             .dispose()
     }
 }
