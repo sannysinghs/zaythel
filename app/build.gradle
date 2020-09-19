@@ -10,7 +10,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
-        applicationId "com.muslimlab.prayers"
+        applicationId "com.zaythel.consumer"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
