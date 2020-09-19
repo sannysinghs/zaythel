@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="6dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            app:srcCompat="@color/cardview_dark_background"
+            android:layout_width="match_parent"
+            android:layout_height="162dp"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppTextAppearance.Medium"
+            android:textSize="12sp"
+            android:text="@string/channel_description"
+            android:id="@+id/category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppTextAppearance.Regular"
+            tools:text="4500"
+            android:textSize="12sp"
+            android:id="@+id/item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            style="@style/AppTextAppearance.Regular"
+            android:textSize="12sp"
+            android:padding="6dp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="@string/add_to_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
