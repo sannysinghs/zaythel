@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012-2020 Grab Taxi Holdings PTE LTD (GRAB), All Rights Reserved. NOTICE: All information contained herein is, and remains the property of GRAB. The intellectual and technical concepts contained herein are confidential, proprietary and controlled by GRAB and may be covered by patents, patents in process, and are protected by trade secret or copyright law.
+  ~ You are strictly forbidden to copy, download, store (in any medium), transmit, disseminate, adapt or change this material in any way unless prior written permission is obtained from GRAB. Access to the source code contained herein is hereby forbidden to anyone except current GRAB employees or contractors with binding Confidentiality and Non-disclosure agreements explicitly covering such access.
+  ~
+  ~ The copyright notice above does not evidence any actual or intended publication or disclosure of this source code, which includes information that is confidential and/or proprietary, and is a trade secret, of GRAB.
+  ~ ANY REPRODUCTION, MODIFICATION, DISTRIBUTION, PUBLIC PERFORMANCE, OR PUBLIC DISPLAY OF OR THROUGH USE OF THIS SOURCE CODE WITHOUT THE EXPRESS WRITTEN CONSENT OF GRAB IS STRICTLY PROHIBITED, AND IN VIOLATION OF APPLICABLE LAWS AND INTERNATIONAL TREATIES. THE RECEIPT OR POSSESSION OF THIS SOURCE CODE AND/OR RELATED INFORMATION DOES NOT CONVEY OR IMPLY ANY RIGHTS TO REPRODUCE, DISCLOSE OR DISTRIBUTE ITS CONTENTS, OR TO MANUFACTURE, USE, OR SELL ANYTHING THAT IT MAY DESCRIBE, IN WHOLE OR IN PART.
+  -->
+<resources>
+
+    <style name="AppTextAppearance" parent="android:TextAppearance"/>
+
+    <style name="AppTextAppearance.Regular">
+        <item name="fontFamily">@font/app_font_regular</item>
+        <item name="android:fontFamily">@font/app_font_regular</item>
+    </style>
+
+    <style name="FontRegular">
+        <item name="android:textAppearance">@style/AppTextAppearance.Regular</item>
+    </style>
+
+    <style name="AppTextAppearance.Light">
+        <item name="fontFamily">@font/app_font_light</item>
+        <item name="android:fontFamily">@font/app_font_light</item>
+    </style>
+
+    <style name="FontLight">
+        <item name="android:textAppearance">@style/AppTextAppearance.Light</item>
+    </style>
+
+    <style name="FontLightItalic">
+        <item name="android:textAppearance">@style/AppTextAppearance.Light</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="AppTextAppearance.Medium">
+        <item name="fontFamily">@font/app_font_medium</item>
+        <item name="android:fontFamily">@font/app_font_medium</item>
+    </style>
+
+    <style name="FontMedium">
+        <item name="android:textAppearance">@style/AppTextAppearance.Medium</item>
+    </style>
+
+    <style name="AppTextAppearance.Bold">
+        <item name="fontFamily">@font/app_font_bold</item>
+        <item name="android:fontFamily">@font/app_font_bold</item>
+    </style>
+
+    <style name="FontBold">
+        <item name="android:textAppearance">@style/AppTextAppearance.Bold</item>
+    </style>
+
+    <style name="AppTextAppearance.LightBold">
+        <item name="fontFamily">@font/app_font_bold_800</item>
+        <item name="android:fontFamily">@font/app_font_bold_800</item>
+    </style>
+
+    <!--
+    https://jira.grab.com/browse/BS-13972
+    In some particular devices (e.g. Vivo) using fontWeight=400 will cause weird behavior to some special characters,
+    especially for big font size.
+    -->
+    <style name="FontLightBold">
+        <item name="android:textAppearance">@style/AppTextAppearance.LightBold</item>
+    </style>
+
+    <style name="FontMedium.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FontRegular.Tiny">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

@@ -8,6 +8,7 @@ import com.muslimlab.prayers.R
 import com.muslimlab.prayers.ui.prayers.AdhanNotificationManager
 import com.muslimlab.prayers.ui.prayers.AdhanPlayer
 import com.muslimlab.prayers.ui.prayers.PrayersFragment
+import com.muslimlab.prayers.ui.product.ProductFragment
 
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -18,13 +19,8 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment_container, PrayersFragment.newInstance())
+            .replace(R.id.fragment_container, ProductFragment.newInstance(2))
             .commit()
 
-    }
-
-    override fun onStart() {
-        super.onStart()
-        AdhanPlayer.stop()
     }
 }
